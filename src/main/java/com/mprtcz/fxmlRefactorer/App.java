@@ -18,7 +18,7 @@ public class App extends javafx.application.Application {
 
         Scene scene = new Scene(root, 1024, 768);
 
-        window.setTitle("Get Elements from FXML");
+        window.setTitle("Get Elements from FXML file");
         window.setScene(scene);
         window.show();
 
