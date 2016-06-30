@@ -1,3 +1,3 @@
 FXML Elememts Getter
 =======================
-Extracts data and displays it as fields and methods required in JavaFX Controller file.
+Java application which extracts data and displays it as fields and methods required in JavaFX Controller file.
