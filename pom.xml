@@ -10,36 +10,26 @@
 
     <build>
     <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>2.3.2</version>
+		<plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <executions>
+         <execution>
+            <phase>package</phase>
+            <goals>
+               <goal>jar</goal>
+            </goals>
             <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-        <plugin>
-            <artifactId>maven-assembly-plugin</artifactId>
-            <executions>
-                <execution>
-                    <phase>package</phase>
-                    <goals>
-                        <goal>single</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <descriptorRefs>
-                    <descriptorRef>jar-with-dependencies</descriptorRef>
-                </descriptorRefs>
-                <archive>
+			<finalName>${project.artifactId}</finalName>
+			<archive>
                     <manifest>
                         <mainClass>com.mprtcz.fxmlRefactorer.App</mainClass>
                     </manifest>
                 </archive>
             </configuration>
-        </plugin>
+         </execution>
+      </executions>
+   </plugin> 
     </plugins>
     </build>
 
