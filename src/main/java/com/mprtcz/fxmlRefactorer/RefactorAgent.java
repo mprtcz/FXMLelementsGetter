@@ -23,26 +23,26 @@ public class RefactorAgent {
                 linesContainingOnAction.add(line);
             }
         }
-        generateControls();
+        generateFields();
         generateMethods();
     }
 
-    private void generateControls(){
-
+    private void generateFields(){
         StringBuilder output = new StringBuilder();
         for(String line : linesContainingFXID){
-            String[] parts = line.split("fx:id=");
+            String[] parts = line.split("fx:id=\"");
             if(parts.length > 2){
                 System.err.println("Unexpected result");
             } else {
-                String controlType = parts[0].split("\\<")[1];
-                //System.out.println("controlType: " +controlType);
-                String controlName = parts[1].split(" ")[0].replace("\"", "");
-                //System.out.println("controlName: " +controlName);
+                String fieldType = parts[0].split("\\<")[1];
+                System.out.println("fieldType: " +fieldType);
+                System.out.println("parts[1]: " +parts[1]);
+                String fieldName = parts[1].split("\"")[0].replace(" ", "");
+                System.out.println("fieldName: " +fieldName);
 
                 output.append("public ");
-                output.append(controlType);
-                output.append(controlName);
+                output.append(fieldType);
+                output.append(fieldName);
                 output.append(";\n");
             }
         }
@@ -58,7 +58,7 @@ public class RefactorAgent {
 
             stringBuilder.append("public void ");
             stringBuilder.append(methodName);
-            stringBuilder.append("() {\n\n}\n");
+            stringBuilder.append("(){\n\n}\n");
         }
         resultMethodsString = String.valueOf(stringBuilder);
     }
