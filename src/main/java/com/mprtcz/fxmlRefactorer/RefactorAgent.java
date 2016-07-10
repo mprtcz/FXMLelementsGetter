@@ -6,15 +6,15 @@ import java.util.List;
 /**
  * Created by Azet on 2016-03-08.
  */
-public class RefactorAgent {
-    List<String> linesContainingFXID = new ArrayList<String>();
-    List<String> linesContainingOnAction = new ArrayList<String>();
+class RefactorAgent {
+    private List<String> linesContainingFXID = new ArrayList<String>();
+    private List<String> linesContainingOnAction = new ArrayList<String>();
     private String resultControlsString;
     private String resultMethodsString;
 
 
 
-    public RefactorAgent(List<String> lines){
+    RefactorAgent(List<String> lines){
         for(String line : lines){
             if(line.contains("fx:id=")){
                 linesContainingFXID.add(line);
@@ -35,10 +35,7 @@ public class RefactorAgent {
                 System.err.println("Unexpected result");
             } else {
                 String fieldType = parts[0].split("\\<")[1];
-                System.out.println("fieldType: " +fieldType);
-                System.out.println("parts[1]: " +parts[1]);
                 String fieldName = parts[1].split("\"")[0].replace(" ", "");
-                System.out.println("fieldName: " +fieldName);
 
                 output.append("public ");
                 output.append(fieldType);
@@ -63,11 +60,11 @@ public class RefactorAgent {
         resultMethodsString = String.valueOf(stringBuilder);
     }
 
-    public String getResultControlsString() {
+    String getResultControlsString() {
         return resultControlsString;
     }
 
-    public String getResultMethodsString() {
+    String getResultMethodsString() {
         return resultMethodsString;
     }
 }

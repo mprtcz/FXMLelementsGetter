@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Created by Azet on 2016-03-08.
  */
-public class FileOpener {
+class FileOpener {
 
-    public static File openFile(Stage stage){
+    static File openFile(Stage stage){
         FileChooser fileChooser = new FileChooser();
 
          ///*
@@ -31,7 +31,7 @@ public class FileOpener {
         return selectedFile;
     }
 
-    public static List<String> getFileContent(File currentFile) throws IOException {
+    static List<String> getFileContent(File currentFile) throws IOException {
         List<String> lines = new ArrayList<String>();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(currentFile.getAbsolutePath()));
